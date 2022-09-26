@@ -13,8 +13,8 @@ public class lesson03Quiz03RestController {
 	@Autowired
 	private RealEstateBO realEstateBO;
 	
-	// 요청 url : http://localhost:8080/lesson03/quiz03?id=8&type=전세&price=70000
-	@RequestMapping("/lesson03/quiz03")
+	// 요청 url : http://localhost:8080/lesson03/quiz03/1?id=8&type=전세&price=70000
+	@RequestMapping("/lesson03/quiz03/1")
 	public String quiz03(
 			@RequestParam("id") int id,
 			@RequestParam("type") String type,
