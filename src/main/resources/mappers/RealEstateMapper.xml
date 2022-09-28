@@ -16,9 +16,9 @@
 		,`createdAt`
 		,`updatedAt`
 		FROM
-		`real_estate`
+			`real_estate`
 		WHERE
-		`id` = #{id}
+			`id` = #{id}
 	</select>
 	<select id="selectRealEstateListByRentPrice" parameterType="int"
 		resultType="com.quiz.lesson03.model.RealEstate">
