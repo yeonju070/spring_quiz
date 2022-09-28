@@ -8,6 +8,8 @@ public class Realtor {
 	private String phoneNumber;
 	private String address;
 	private String grade;
+	private Date createdAt;
+	private Date updatedAt;
 
 	public int getId() {
 		return id;
@@ -65,6 +67,4 @@ public class Realtor {
 		this.updatedAt = updatedAt;
 	}
 
-	private Date createdAt;
-	private Date updatedAt;
 }

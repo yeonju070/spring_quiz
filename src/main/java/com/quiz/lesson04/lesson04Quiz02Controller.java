@@ -29,13 +29,17 @@ public class lesson04Quiz02Controller {
 			@ModelAttribute Realtor realtor,
 			Model model) {
 		
+		// DB insert
 		realtorBO.addRealtor(realtor);
 		
+		// DB select
 		Realtor realtor2 = realtorBO.getRealtorById(realtor.getId());
 		
+		// model 넣기
 		model.addAttribute("realtor", realtor2);
 		model.addAttribute("info", "공인중개사 정보");
 		
+		// jsp 응답값
 		return "lesson04/afterAddRealtor";
 	}
 }
