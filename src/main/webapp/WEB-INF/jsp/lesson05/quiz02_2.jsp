@@ -38,7 +38,7 @@
 							<td class="text-warning">${member.grade}</td>
 						</c:when>
 						<c:otherwise>
-							<td>${member.grade}P</td>
+							<td>${member.grade}</td>
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
