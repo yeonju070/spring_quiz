@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSTL Core 라이브러리 (2)</title>
+<title>JSTL Formatter 통화, 날짜</title>
 <!-- bootstrap CDN link -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -15,40 +16,26 @@
 </head>
 <body>
 	<div class="container">
-		<h1>멤버십</h1>
+		<h1>2. 카드 명세서</h1>
 		<table class="table text-center">
 			<thead>
 				<tr>
-					<th>이름</th>
-					<th>전화번호</th>
-					<th>등급</th>
-					<th>포인트</th>
+					<th>사용처</th>
+					<th>가격</th>
+					<th>사용 날짜</th>
+					<th>할부</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${membership}" var="member">
+				<c:forEach items="${cardBills}" var="bill">
 				<tr>
-					<td>${member.name}</td>
-					<td>${member.phoneNumber}</td>
-					<c:choose>
-						<c:when test="${member.grade eq 'VIP'}">
-							<td class="text-danger">${member.grade}</td>
-						</c:when>
-						<c:when test="${member.grade eq 'GOLD'}">
-							<td class="text-warning">${member.grade}</td>
-						</c:when>
-						<c:otherwise>
-							<td>${member.grade}P</td>
-						</c:otherwise>
-					</c:choose>
-					<c:choose>
-						<c:when test="${member.point >= 5000}">
-							<td class="text-primary">${member.point}</td>
-						</c:when>
-						<c:otherwise>
-							<td>${member.point}</td>
-						</c:otherwise>
-					</c:choose>
+					<td>${bill.store}</td>
+					<td><fmt:formatNumber value="${bill.pay}" type="currency" /></td>
+					<td>
+						<fmt:parseDate value="${bill.date}" pattern="yyyy-MM-dd" var="date" />
+						<fmt:formatDate value="${date}" pattern="yyyy년 M월 d일"/>
+					</td>
+					<td>${bill.installment}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
