@@ -11,13 +11,13 @@ import com.quiz.lesson02.model.Store;
 
 @RestController
 public class lesson02RestController {
-	
+
 	@Autowired
-	private StoreBO storeBO;	// BO 객체 가져오기
-	
+	private StoreBO storeBO; // BO 객체 가져오기
+
 	// http://localhost:8080/lesson02/quiz01
 	@RequestMapping("/lesson02/quiz01")
 	public List<Store> quiz01() {
-		return storeBO.getStoreList();	// 객체 => json
+		return storeBO.getStoreList(); // 객체 => json
 	}
 }
