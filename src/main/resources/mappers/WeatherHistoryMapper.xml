@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.marobiana.lesson05.dao.WeatherHistoryDAO">
+<mapper namespace="com.quiz.lesson05.dao.WeatherHistoryDAO">
 	<select id="selectWeatherHistoryList"
-		resultType="com.marobiana.lesson05.model.WeatherHistory">
+		resultType="com.quiz.lesson05.model.WeatherHistory">
 		SELECT
 		`id`
 		, `date`
