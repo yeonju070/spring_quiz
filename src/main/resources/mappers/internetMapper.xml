@@ -6,21 +6,20 @@
 	<insert id="insertInternet" parameterType="map">
 		INSERT INTO `internet`
 		(
-			`id`
-			,`name`
+			`name`
 			,`url`
 			,`createdAt`
 			,`updatedAt`
 		)
 		VALUES
 		(
-			#{id}
-			, #{name}
+			#{name}
 			, #{url}
 			, NOW()
 			, NOW()
 		)
 	</insert>
+	
 	<select id="selectInternetList" resultType="com.quiz.lesson06.model.Internet">
 		SELECT
 			`id`
@@ -31,4 +30,25 @@
 		FROM
 			`internet`
 	</select>
+	
+	<select id="selectInternetByUrl" parameterType="String" resultType="com.quiz.lesson06.model.Internet">
+		SELECT
+			`id`
+			,`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+		 	`internet`
+		 WHERE
+		 	`url` = #{url}
+	</select>
+	
+	<delete id="deleteInternetById" parameterType="int">
+		DELETE
+		FROM
+			`internet`
+		WHERE
+			`id` = #{id}
+	</delete>
 </mapper>

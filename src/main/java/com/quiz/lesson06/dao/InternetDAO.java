@@ -9,10 +9,14 @@ import com.quiz.lesson06.model.Internet;
 
 @Repository
 public interface InternetDAO {
-
-   public void insertInternet(
-         @Param("title") String title,
-         @Param("url") String url);
-   
-   public List<Internet> selectInternetList();
+	
+	public void insertInternet(
+			@Param("name") String name, 
+			@Param("url") String url);
+	
+	public List<Internet> selectInternetList();
+	
+	public List<Internet> selectInternetByUrl(String url);
+	
+	public int deleteInternetById(int id);
 }
