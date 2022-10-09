@@ -1,0 +1,20 @@
+@charset "UTF-8";
+header {height:100px;}
+header .logo {text-decoration-line: none;}
+
+nav {height:40px; background-color:#E3871F;}
+
+.banner {height:500px;}
+
+.contents {height:auto}
+.contents .confirm-box {width:450px;}
+.contents .content-left {background-color:#B1520F;}
+.contents .content-mid {background-color: #CF6317;}
+.contents .content-check {font-size: 20px;}
+.contents .content-right {background-color:#B1520F;}
+.reserve-confirm {color:#fff; font-size: 25px; }
+
+footer {height:80px;}
+
+.input-form {width:250px}
+.subject {margin-right: 20px; color:#fff; font-size:15px;}

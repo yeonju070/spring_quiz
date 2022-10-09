@@ -23,14 +23,15 @@ public class InternetBO {
 	}
 	
 	public Internet getInternetByUrl(String url) {
-		List<Internet> internetList =  internetDAO.selectInternetByUrl(url);
+		List<Internet> internetList = internetDAO.selectInternetByUrl(url);  // [], [{}]
 		if (internetList.isEmpty()) {
-			return null;	// 중복이 아닐 경우 null로 return
+			return null; // 중복 아니면 null 리턴 
 		}
-		return internetList.get(0);	// 중복이면 첫번째 데이터를 return한다.
+		
+		return internetList.get(0);	// 중복이면 첫번째 데이터를 리턴한다.
 	}
 	
-	public int deleteInternetById(int id) {
-		return internetDAO.deleteInternetById(id);
+	public int deleteInternet(int id) {
+		return internetDAO.deleteInternet(id);
 	}
 }

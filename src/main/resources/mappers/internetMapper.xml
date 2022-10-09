@@ -31,7 +31,7 @@
 			`internet`
 	</select>
 	
-	<select id="selectInternetByUrl" parameterType="String" resultType="com.quiz.lesson06.model.Internet">
+	<select id="selectInternetByUrl" parameterType="string" resultType="com.quiz.lesson06.model.Internet">
 		SELECT
 			`id`
 			,`name`
@@ -39,12 +39,12 @@
 			,`createdAt`
 			,`updatedAt`
 		FROM
-		 	`internet`
-		 WHERE
-		 	`url` = #{url}
+			`internet`
+		WHERE
+			`url` = #{url}
 	</select>
 	
-	<delete id="deleteInternetById" parameterType="int">
+	<delete id="deleteInternet" parameterType="int">
 		DELETE
 		FROM
 			`internet`

@@ -18,5 +18,5 @@ public interface InternetDAO {
 	
 	public List<Internet> selectInternetByUrl(String url);
 	
-	public int deleteInternetById(int id);
+	public int deleteInternet(int id);
 }
