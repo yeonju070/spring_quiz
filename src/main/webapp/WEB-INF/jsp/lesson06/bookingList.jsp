@@ -88,20 +88,23 @@
 	<script>
 		$(document).ready(function() {
 			$(".del-btn").on("click", function() {
-				let bookingId = $(this).data("booking-id");
+				let bookingId = $(this).data("booking-id");	// camel 표기 절대 x 무조건 snake
 				
 				// AJAX
 				$.ajax({
 					// request
 					type:"DELETE"
-					, url : "lesson06/delete_booking"
+					, url : "/lesson06/delete_booking"
 					, data : {"id":bookingId}
 					
 					//response
 					, success:function(data) {
+						// {"result":"success", "code":100}	=> 100:성공
 						if (data.code == 100) {
+							alert("삭제되었습니다.");
 							location.reload(true);
 						} else {
+							// {"errorMessage":"실패하였습니다."}
 							alert(data.errorMessage);
 						}
 					}

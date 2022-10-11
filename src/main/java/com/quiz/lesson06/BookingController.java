@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,16 +35,48 @@ public class BookingController {
 	@ResponseBody
 	public Map<String, Object> deleteBooking(
 			@RequestParam("id") int id) {
+		
+		// 삭제 DB
+		int deleteCount = bookingBO.deleteBooking(id);
+		
 		Map<String, Object> result = new HashMap<>();
 		
-		int deleteRow = bookingBO.deleteBooking(id);
-		
-		if (deleteRow > 0) {
+		if (deleteCount > 0) {
 			result.put("code", 100);
 			result.put("result", "성공");
 		} else {
 			result.put("code", 500);
-			result.put("errorMessage", "삭제하는데 실패하였습니다.");
+			result.put("errorMessage", "삭제할 예약 내역이 없습니다.");
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping("/booking_confirm_view")
+	public String bookingConfirmView() {
+		
+		return "lesson06/bookingConfirm";
+	}
+
+	// AJAX 호출
+	@ResponseBody
+	@PostMapping("/add_booking")
+	public Map<String, Object> addBooking(
+			@RequestParam("name") String name,
+			@RequestParam("date") String date,
+			@RequestParam("day") int day,
+			@RequestParam("headcount") int headcount,
+			@RequestParam("phoneNumber") String phoneNumber) {
+		
+		int addCount = bookingBO.addBooking(name, date, day, headcount, phoneNumber);
+		
+		Map<String, Object> result = new HashMap<>();
+		if (addCount > 0) {
+			result.put("code", 100);
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "데이터를 입력하는데 실패했습니다.");
 		}
 		
 		return result;
@@ -55,9 +88,23 @@ public class BookingController {
 		return "lesson06/bookingHomepage";
 	}
 	
-	@RequestMapping("/booking_confirm_view")
-	public String bookingConfirmView() {
+	// AJAX의 요청
+	@ResponseBody
+	@PostMapping("/search_booking")
+	public Map<String, Object> searchBooking(
+			@RequestParam("name") String name,
+			@RequestParam("phoneNumber") String phoneNumber) {
 		
-		return "lesson06/bookingConfirm";
+		Booking booking = bookingBO.getLatesBooking(name, phoneNumber);
+		
+		Map<String, Object> result = new HashMap<>();
+		if (booking != null) {
+			result.put("code", 100);		// 데이터 있음
+			result.put("booking", booking);
+		} else {
+			result.put("code", 400);	// 데이터 없음
+		}
+		
+		return result;
 	}
 }
