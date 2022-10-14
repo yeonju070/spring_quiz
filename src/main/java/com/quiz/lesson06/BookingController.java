@@ -89,22 +89,22 @@ public class BookingController {
 	}
 	
 	// AJAX의 요청
-	@ResponseBody
-	@PostMapping("/search_booking")
-	public Map<String, Object> searchBooking(
-			@RequestParam("name") String name,
-			@RequestParam("phoneNumber") String phoneNumber) {
-		
-		Booking booking = bookingBO.getLatesBooking(name, phoneNumber);
-		
-		Map<String, Object> result = new HashMap<>();
-		if (booking != null) {
-			result.put("code", 100);		// 데이터 있음
-			result.put("booking", booking);
-		} else {
-			result.put("code", 400);	// 데이터 없음
+		@ResponseBody
+		@PostMapping("/search_booking")
+		public Map<String, Object> searchBooking(
+				@RequestParam("name") String name,
+				@RequestParam("phoneNumber") String phoneNumber) {
+			
+			Booking booking = bookingBO.getLatesBooking(name, phoneNumber);
+			
+			Map<String, Object> result = new HashMap<>();
+			if (booking != null) {
+				result.put("code", 100);		// 데이터 있음
+				result.put("booking", booking);
+			} else {
+				result.put("code", 400);	// 데이터 없음
+			}
+			
+			return result;
 		}
-		
-		return result;
-	}
 }

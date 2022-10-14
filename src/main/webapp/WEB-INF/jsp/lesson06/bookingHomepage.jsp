@@ -49,6 +49,8 @@
 		    <div class="m-3">
 		        <span class="content-check mr-3 text-white">예약 확인</span>
 		    </div>
+		    
+		    <%-- 예약확인 --%>
 		    <div>
 		        <div class="d-flex justify-content-end align-items-center">
 		            <div class="subject">이름:</div>
@@ -100,6 +102,11 @@
 				
 				if (phoneNumber == '') {
 					alert("전화번호를 입력해주세요.");
+					return;
+				}
+				
+				if (phoneNumber.startsWith("010") == false) {
+					alert("010으로 시작하는 번호만 입력 가능합니다.");
 					return;
 				}
 				
